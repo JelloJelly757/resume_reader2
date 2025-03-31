@@ -6,6 +6,7 @@ for x in range(6):
     resumeNameList.append(f"resume{x+1}.pdf")
 print(resumeNameList)
 
+# loop through each pdf file
 for pdfName in resumeNameList:
     
     # open the pdf file
@@ -15,14 +16,10 @@ for pdfName in resumeNameList:
     num_pages = len(reader.pages)
 
     # define key terms
-    string1 = "leadership" #college education
-    x = string1.lower()
-    string2 = "university" #skills
-    x = string2.lower()
-    string3 = "python" #experiences
-    x = string3.lower()
-    string4 = "GPA"   #certifications
-    x = string4.lower()
+    string1 = "leadership".lower() #college education
+    string2 = "university".lower() #skills
+    string3 = "python".lower() #experiences
+    string4 = "GPA".lower() #certifications
 
     # extract text and do the search
     for page in reader.pages:
@@ -39,6 +36,7 @@ for pdfName in resumeNameList:
 
     my_dict = {"leadership": 1, "university": 2, "python": 3, "GPA": 4}
 
+    # function to calculate points for the PDF
     def get_points_for_pdf(words):
         total_points = 0
         for word in words:
@@ -47,6 +45,7 @@ for pdfName in resumeNameList:
         return total_points
 
     total_pdf_points = 0
+
     # extract text and calculate the score
     for page in reader.pages:
         text = page.extract_text()
@@ -60,7 +59,6 @@ for pdfName in resumeNameList:
     pointArray.append("|")
 print(pointArray)
 
-#we need to make it lower caps accessible + the ending needs to say Resume one has: __ points, etc 
-#can the words in the pdf be case sensitive or does it have to be exactly like the pdf?
-#comment more code need to + we s to be multi points? #we need to get thin
+#the ending needs to say Resume one has: __ points, etc 
+#need multi points 
 #ending needs to say Resume __ is the most qualified with __ points 

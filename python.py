@@ -50,7 +50,6 @@ for pdfName in resumeNameList:
     for page in reader.pages:
         text = page.extract_text()
         words = text.split()  # Split the text into individual words
-        #print(f"Intial total point value {total_points}")
         total_points = get_points_for_pdf(words)
         print(f"Total points for this page: {total_points}")
         total_pdf_points += total_points
@@ -59,6 +58,13 @@ for pdfName in resumeNameList:
     pointArray.append("|")
 print(pointArray)
 
-#the ending needs to say Resume one has: __ points, etc 
+max_points = max(pointArray[::2])
+best_resume_index = pointArray.index(max_points) // 2 
+
+for i in range(0, len(pointArray), 2):
+    print(f"Resume {i//2 + 1}: {pointArray[i]} points")
+
+print(f"The best resume is: Resume {best_resume_index + 1} with {max_points} points")
+
+ 
 #need multi points 
-#ending needs to say Resume __ is the most qualified with __ points 

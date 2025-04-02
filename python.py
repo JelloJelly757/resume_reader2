@@ -16,10 +16,10 @@ for pdfName in resumeNameList:
     num_pages = len(reader.pages)
 
     # define key terms
-    string1 = "leadership".lower() #college education
-    string2 = "university".lower() #skills
-    string3 = "python".lower() #experiences
-    string4 = "GPA".lower() #certifications
+    string1 = "Leadership".lower() 
+    string2 = "intern".lower() 
+    string3 = "project".lower() 
+    string4 = "University".lower() 
 
     # extract text and do the search
     for page in reader.pages:
@@ -34,7 +34,7 @@ for pdfName in resumeNameList:
         res_search = re.findall(string4, text)
         print(res_search)
 
-    my_dict = {"leadership": 1, "university": 2, "python": 3, "GPA": 4}
+    my_dict = {"Leadership": 1, "intern": 2, "project": 3, "University": 4}
 
     # function to calculate points for the PDF
     def get_points_for_pdf(words):
@@ -58,6 +58,7 @@ for pdfName in resumeNameList:
     pointArray.append("|")
 print(pointArray)
 
+# finding best resume with most points 
 max_points = max(pointArray[::2])
 best_resume_index = pointArray.index(max_points) // 2 
 
@@ -67,4 +68,4 @@ for i in range(0, len(pointArray), 2):
 print(f"The best resume is: Resume {best_resume_index + 1} with {max_points} points")
 
  
-#need multi points 
+ 
